@@ -59,8 +59,8 @@ class PlayList {
         //// replace the following statement with your code
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < size; i++) {
-        output.append(tracks[i].toString());
-        output.append("\n");
+        output.append("\n"+tracks[i].toString());
+        
         }
         return output.toString();
         
@@ -72,8 +72,8 @@ class PlayList {
     public void removeLast() {
         //// replace this comment with your code
         if (size != 0) {
-            tracks[size] = null;
-            size--;
+            tracks[size--] = null;
+
         }
     }
 
@@ -141,7 +141,7 @@ class PlayList {
         //// replace this comment with your code
         if (!(size == 0 || i < 0 || i > size)) {
             for (int j = i; j < size; j++) {
-                tracks[i] = tracks[i + 1];
+                tracks[j] = tracks[j + 1];
             }
             removeLast();
         }
@@ -180,7 +180,7 @@ class PlayList {
         //// replace this comment with your code
         if (other.getSize() + size <= maxSize) {
             for (int i = 0; i < other.getSize(); i++) {
-                this.add(other.getTrack(i));
+                add(other.getTrack(i));
             }
         }
     }
@@ -235,9 +235,10 @@ class PlayList {
         Track tempTrack = null;
         for (int i = 0; i < size; i++) {
             // bubble sort
+            int minIndex = minIndex(i); //get this index before starting to change the order of the array;
             tempTrack = tracks[i];
-            tracks[i] = tracks[minIndex(i)];
-            tracks[minIndex(i)] = tempTrack;
+            tracks[i] = tracks[minIndex];
+            tracks[minIndex] = tempTrack;
 
         }
     }
