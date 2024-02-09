@@ -40,14 +40,14 @@ class PlayList {
      */
     public boolean add(Track track) {
         //// replace the following statement with your code
-        if (size == maxSize) {
+        if (size >= maxSize) {
             return false;
         } else {
-            tracks[size] = track;
-            size++;
+            tracks[size++] = track;
+            return true;
         }
 
-        return true;
+       
     }
 
     /**
@@ -57,7 +57,13 @@ class PlayList {
     //// For an efficient implementation, use StringBuilder.
     public String toString() {
         //// replace the following statement with your code
-        return "";
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+        output.append(tracks[i].toString());
+        output.append("\n");
+        }
+        return output.toString();
+        
     }
 
     /**
